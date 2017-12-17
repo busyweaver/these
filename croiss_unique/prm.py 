@@ -1,0 +1,7 @@
+import math
+import random
+import sys
+import string
+
+def iterateur(n):
+    

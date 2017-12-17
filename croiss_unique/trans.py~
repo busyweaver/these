@@ -1,0 +1,40 @@
+import cfu
+import sys
+import string
+import prm
+
+def permtoarb(p,res):
+    if(len(p)==1):
+        return res
+    if(len(p)==2):
+        #normalement cest forcement 2,1 au debut
+        return res
+        
+
+    orig=origtaille(p)
+    comp_orig=len(p)-orig+1
+    res.append([indice(comp_orig,p),len(p)-orig+1])
+    
+    permtoarb(y,res)
+    
+
+def origtaille(p):
+    orig=len(p)-1
+    pos=len(p)
+    while(pos=p[pos-1]):
+        pos=pos-1
+        orig=orig-1
+
+
+
+def indice(x,tab):
+    for i in range(0,len(tab)):
+        if(tab[i]==x):
+            return i
+    print "erreur non indice"
+    sys.exit(-1)
+
+def supprimer_traite(p,x):
+    np = []
+    for i in range(0,len(p)):
+        

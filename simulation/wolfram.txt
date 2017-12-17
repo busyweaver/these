@@ -1,0 +1,1 @@
+integrate ((exp(bt+(1-t)a)-1)*(tb+(1-t)a-log(2)))/(2-exp(tb+(1-t)a))^2 dt
