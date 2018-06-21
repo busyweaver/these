@@ -149,7 +149,7 @@ def ecrit(fil,noeuds):
         i = len(noeuds)
         for z in noeuds[2]:
             #a rajouter label voir format
-            fil.write(string.join([str(noeuds[0]),"->",str(z[0]),"\n"]," "))
+            fil.write(string.join([str(noeuds[0]),"->",str(z[0])," [arrowhead=none]  \n"]," "))
             ecrit(fil,z)
 
         fil.write("\n")
@@ -165,19 +165,13 @@ def recon_arbre(noeuds):
     id=[2]
     abr=initialistation(noeuds[len(noeuds)-1],id)
     rac=[1,1,abr]
+    print '%s' % rac
 
     for fg in range(1,len(noeuds)):
- 
-        j=len(noeuds)-1-fg
-        decalage=0
-        for k in range(0,len(noeuds[j])):
-        #    print 'boucle %d' % k
-            print 'tab %s' % str(noeuds[j])
-         #   print 'decalage %d' % decalage
-            if not(noeuds[j][k]==None):
-                etendre(decalage+k,noeuds[j][k],rac,fg+1,id)
-                decalage=decalage+noeuds[j][k]-1
-  #  print 'cloche %s' % str(rac)
+        j=len(noeuds)-fg-1
+        etendre(noeuds[j][0]-1,noeuds[j][1],rac,fg+1,id)
+        print '%s' % rac
+       
     return rac
             
 
@@ -186,6 +180,7 @@ def etendre(k,ari,rac,lab,id):
    # print 'label %d' % lab
    # print 'arite %d' % ari
     x=trouver_feuille(k,rac)
+    print 'x= %s' % x
     etendre_feuille(x,ari,lab,id)
 
 
@@ -203,7 +198,7 @@ def incr(id):
     
 def initialistation(x,id):
     a=[]
-    for i in range(0,x[0]):
+    for i in range(0,x[1]):
         a.append([id[0],0,None])
         incr(id)
     return a
@@ -253,12 +248,15 @@ def height(arbre):
 
 
 def un_arbre(t,kf,CON):
-    #print '%d' % kf[t]
+ #   print '%s' % kf
     n=random.randint(1,kf[t]+1)
     print 'numero tire %d sur un total de %d' % (n,kf[t])
     res=[]
     trouverarbre(n,t,kf,CON,res)
-    
+    print "%s" % res
+    res=recon_arbre(res)
+    print "%s" % res
+    gene_dot(res)
     return res 
     
 

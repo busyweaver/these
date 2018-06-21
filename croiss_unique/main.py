@@ -55,30 +55,33 @@ def triangle_noeuds(N):
 
 def main():
 
-    # tab=[]
+    tab=[]
+    cfu.recurrence(N,recur,recurint)
+    cfu.un_arbre(N-1,recur,recurint)
     # res2=[]
-    # perm=prm.perm_contr(N,1,2)
+#    perm=prm.perm_contr(N,1,2)
     # for e in perm:
     #     res=prm.profil(e)
     #     print res
-    # for e in res:
+    # for e in perm:
     #     print e 
     #     trans.permtoarb(e,tab)
     #     print 'allee'
     #     print tab
     #     print 'retour'
+    #     tab=[]
     #     trans.arbtoperm(tab,res2)
     #     print res2
     #     print ''
     #     res2=[]
     #     tab=[]
     # print 'fin'
-    cfu.recurrence(N,recur,recurint)
-    res=cfu.iterateur(N,recur,recurint)
-    for e in res:
-        print e
-        res2=cfu.recon_arbre(e)
-        print res2
+    # cfu.recurrence(N,recur,recurint)
+    # res=cfu.iterateur(N,recur,recurint)
+    # for e in res:
+    #     print e
+    #     res2=cfu.recon_arbre(e)
+    #     print res2
     #print res
     
     # haut=[[] for i in range(0,N)]
